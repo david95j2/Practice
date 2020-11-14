@@ -1,0 +1,96 @@
+DROP DATABASE testData;
+
+CREATE DATABASE testData
+USE testData
+SHOW TABLES
+
+CREATE TABLE article(
+id INT(10), regDate DATETIME , updateDate DATETIME, title VARCHAR(200), `body` VARCHAR(200), nickname VARCHAR(200), memberId INT(10), boardId INT(10)
+);
+
+DESC article
+
+ALTER TABLE article MODIFY COLUMN id INT(10) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT;
+ALTER TABLE article MODIFY COLUMN regDate DATETIME NOT NULL
+ALTER TABLE article MODIFY COLUMN updateDate DATETIME NOT NULL
+ALTER TABLE article MODIFY COLUMN title VARCHAR(200) NOT NULL
+ALTER TABLE article MODIFY COLUMN `body` VARCHAR(200) NOT NULL
+ALTER TABLE article MODIFY COLUMN nickname VARCHAR(200) NOT NULL
+ALTER TABLE article MODIFY COLUMN memberId INT(10) UNSIGNED NOT NULL
+ALTER TABLE article MODIFY COLUMN boardId INT(10) UNSIGNED NOT NULL
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목1', `body`='내용1',
+nickname = '사자', memberId=1, boardId=1;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목2', `body`='내용2',
+nickname = '호랑이', memberId=2, boardId=1;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목3', `body`='내용3',
+nickname = '곰', memberId=3, boardId=1;
+
+SELECT * FROM article
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목4', `body`='내용4',
+nickname = '곰', memberId=3, boardId=2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목5', `body`='내용5',
+nickname = '사자', memberId=1, boardId=2;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title='제목6', `body`='내용6',
+nickname = '캥거루', memberId=4, boardId=2;
+
+SELECT * FROM article
+
+
+SHOW TABLES
+
+CREATE TABLE `member`(
+id INT(10) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT, userId CHAR(100) NOT NULL, passwd CHAR(100) NOT NULL, `name` CHAR(100) NOT NULL
+);
+
+ALTER TABLE `member` ADD COLUMN regDate DATETIME NOT NULL;
+
+DESC `member`
+
+SELECT * FROM `member`
+
+CREATE TABLE board(
+id INT(10) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT, `name` CHAR(100) NOT NULL
+);
+
+SHOW TABLES
+
+ALTER TABLE board ADD COLUMN regDate DATETIME NOT NULL
+ALTER TABLE board ADD COLUMN updateDate DATETIME NOT NULL
+DESC board
+
+SELECT * FROM article
+SELECT * FROM `member`
+SELECT * FROM board
+
+INSERT INTO `member`
+SET id = 0,
+userId = 'admin',
+passwd = 'admin',
+`name`='admin',
+regDate = NOW();
+
+DELETE FROM `member` WHERE id =5
