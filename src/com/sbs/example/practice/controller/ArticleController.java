@@ -85,7 +85,8 @@ public class ArticleController extends Controller {
 		
 		int boardId = Container.session.selectedBoardId;
 		int memberId = Container.session.loginedMemberId;
-		int num=articleService.write(boardId,memberId,title,body);
+		Member member = memberService.getMember(memberId);
+		int num=articleService.write(boardId,member.name,member.id,title,body);
 		System.out.printf("%d번 게시물이 등록되었습니다.\n",num);
 	}
 

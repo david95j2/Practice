@@ -198,7 +198,7 @@ public class ArticleDao {
 		}
 	}
 
-	public int add(int boardId, int memberId, String title, String body) {
+	public int add(int boardId, String name, int memberId,String title, String body) {
 		int id = 0;
 		Connection conn = null;
 		Statement state = null;
@@ -218,7 +218,7 @@ public class ArticleDao {
 			PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, title);
 			pstmt.setString(2, body);
-			pstmt.setInt(3, memberId);
+			pstmt.setString(3, name);
 			pstmt.setInt(4, memberId);
 			pstmt.setInt(5, boardId);
 			pstmt.executeUpdate();// SQL문을 전달하여 실행

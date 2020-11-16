@@ -29,8 +29,8 @@ public class ArticleService {
 		articleDao.remove(id);
 	}
 
-	public int write(int boardId, int memberId, String title, String body) {
-		return articleDao.add(boardId,memberId,title,body);
+	public int write(int boardId, String name, int memberId, String title, String body) {
+		return articleDao.add(boardId,name,memberId,title,body);
 	}
 
 	public int makeBoard(String name) {
